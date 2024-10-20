@@ -9,17 +9,15 @@ const NavbarLayout = () => {
 
 const LayerOne = () => {
   return (
-    <div className="flex justify-start items-center ">
+    <div className="flex justify-start items-center  flex-wrap">
       <img
-        src="/public/LOGOALPIN.png"
+        src="/public/LOGO_ALPIN.png"
         alt="logo"
         width={50}
         height={25}
-        className="ml-10 rounded-full"
+        className="ml-10 rounded-full mt-2"
       />
-      <h1 className="text-2xl font-bold text-white mt-1 ml-5 text-black">
-        PIN Ecommers
-      </h1>
+      <h1 className="text-2xl font-bold mt-1 ml-5 text-black">PIN Ecommers</h1>
     </div>
   );
 };

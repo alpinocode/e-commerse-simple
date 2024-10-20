@@ -1,6 +1,6 @@
 const FooterLayout = () => {
   return (
-    <footer className="flex justify-around items-center">
+    <footer className="flex flex-wrap justify-around items-center bg-blue-100 h-lvh">
       <LayerOne />
       <LayerTwo />
     </footer>
@@ -10,7 +10,12 @@ const FooterLayout = () => {
 const LayerOne = () => {
   return (
     <div className="flex justify-start">
-      <img src="/public/LOGOALPIN.png" alt="" width={400} className="mt-2" />
+      <img
+        src="/public/LOGO_ALPIN.png"
+        alt=""
+        width={400}
+        className="mt-2 bg-transparent"
+      />
     </div>
   );
 };
