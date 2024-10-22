@@ -1,6 +1,6 @@
 const FooterLayout = () => {
   return (
-    <footer className="flex flex-wrap justify-around items-center bg-blue-100 h-lvh">
+    <footer className="flex flex-wrap justify-around items-center bg-blue-100 h-auto ">
       <LayerOne />
       <LayerTwo />
     </footer>
@@ -53,7 +53,7 @@ const ComponentsTwo = () => {
         {" "}
         me can contact me.
       </h2>
-      <div className="mt-5 flex gap-10 items-center ml-20">
+      <div className="mt-5 flex gap-10 items-center ml-20 mb-10">
         <img src="/public/new.png" alt="gmail" width={100} />
         <img src="/public/whatsapp.png" alt="whatsapp" width={100} />
       </div>

@@ -3,40 +3,69 @@ import FooterLayout from "../components/layout/FooterLayout";
 import NavbarLayout from "../components/layout/NavbarLayout";
 import { getProducts } from "../services/getProduct";
 import CardProduct from "../components/fragment/Card";
-import Search from "../components/element/button/Searc";
-import { data } from "autoprefixer";
+import Search from "../components/element/Searc";
+import ProductList from "../components/element/ProductList";
+// import ProductList from "../components/element/ProductList";
 
 const HomePage = () => {
   const [product, setProduct] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     getProducts((data) => {
       setProduct(data);
+      setFilteredProducts(data);
     });
   }, []);
 
+  const handleFilter = (
+    selectedPrice,
+    selectedCategory,
+    selectedPopularity
+  ) => {
+    let filtered = product;
+
+    if (selectedPrice) {
+      filtered = filtered.filter(
+        (prod) => prod.price === Number(selectedPrice)
+      );
+    }
+
+    if (selectedCategory) {
+      filtered = filtered.filter((prod) => prod.category === selectedCategory);
+    }
+
+    if (selectedPopularity) {
+      filtered = filtered.filter(
+        (prod) => prod.rating.rate === Number(selectedPopularity)
+      );
+    }
+
+    setFilteredProducts(filtered);
+  };
+
   useEffect(() => {
     if (search !== "") {
-      const result = product.filter((product) =>
+      const result = filteredProducts.filter((product) =>
         product.title.toLowerCase().includes(search.toLowerCase().trim())
       );
-      // const filteredResult = result.toLowerCase().trim();
-      // console.log("Cek Data Apakah huruf kecil", filteredResult);
       setSearchResult(result);
     } else {
-      setSearchResult(product);
+      setSearchResult(filteredProducts);
     }
-  }, [product, search]);
+  }, [filteredProducts, search]);
 
-  console.log(search);
   return (
     <>
       <NavbarLayout />
       <div className="className=flex bg-[rgb(47,51,73)] h-full">
-        <div className="flex justify-end">
-          <Search onChange={(e) => setSearch(e.target.value)}></Search>
+        <div className="flex justify-between flex-wrap">
+          <ProductList onFilter={handleFilter} />
+          <div className="flex mt-10 ml-10 justify-end mr-20">
+            <Search onChange={(e) => setSearch(e.target.value)}></Search>
+          </div>
         </div>
 
         <div className="flex flex-wrap ml-6 ">

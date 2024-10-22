@@ -34,7 +34,7 @@ const ContentText = (props) => {
           #{kategory1}
         </span>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 justify-start flex w-20 h-8 justify-center">
-          {kategory2}
+          $. {kategory2}
         </span>
       </div>
       <div className="flex justify-end">
