@@ -5,6 +5,7 @@ import { getProducts } from "../services/getProduct";
 import CardProduct from "../components/fragment/Card";
 import Search from "../components/element/Searc";
 import ProductList from "../components/element/ProductList";
+
 // import ProductList from "../components/element/ProductList";
 
 const HomePage = () => {
@@ -59,7 +60,7 @@ const HomePage = () => {
 
   return (
     <>
-      <NavbarLayout />
+      <NavbarLayout product={search} />
       <div className="className=flex bg-[rgb(47,51,73)] h-full">
         <div className="flex justify-between flex-wrap">
           <ProductList onFilter={handleFilter} />
@@ -76,6 +77,8 @@ const HomePage = () => {
                 judul={produc.title}
                 kategory1={produc.category}
                 kategory2={produc.price}
+                id={produc.id}
+                image={produc.image}
               >
                 {produc.description.substring(0, 100)} ...
               </CardProduct.ContentText>

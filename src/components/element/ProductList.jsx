@@ -43,7 +43,7 @@ const ProductList = ({ onFilter }) => {
           id="price-select"
           value={selectedPrice}
           onChange={(e) => setSelectedPrice(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-black rounded-lg"
+          className="bg-gray-50 border border-gray-300 text-black rounded-lg text-2xl font-bold"
         >
           <option value="">All Prices</option>
           {price.map((price, index) => (
@@ -64,7 +64,7 @@ const ProductList = ({ onFilter }) => {
           id="category-select"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+          className="bg-gray-50 border border-gray-300 text-gray-900  rounded-lg text-2xl font-bold"
         >
           <option value="">All Categories</option>
           {categories.map((category, index) => (
@@ -86,7 +86,7 @@ const ProductList = ({ onFilter }) => {
           id="popularity-select"
           value={selectedPopularity}
           onChange={(e) => setSelectedPopularity(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-2xl font-bold rounded-lg"
         >
           <option value="">All Ratings</option>
           {popularity.map((pop, index) => (

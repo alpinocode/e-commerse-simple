@@ -1,4 +1,6 @@
+import { json } from "react-router-dom";
 import Button from "../element/button";
+import { useEffect, useRef, useState } from "react";
 
 const CardProduct = (props) => {
   const { children } = props;
@@ -24,7 +26,41 @@ const ImageContent = (props) => {
 };
 
 const ContentText = (props) => {
-  const { judul, children, kategory1, kategory2 } = props;
+  const { judul, children, kategory1, kategory2, id, image } = props;
+
+  const cardRef = useRef([]);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("card")) || [];
+
+    if (Array.isArray(storedData)) {
+      cardRef.current = storedData;
+    } else {
+      console.error("Data tidak valid, menginisialisasi dengan array kosong.");
+      cardRef.current = [];
+    }
+  }, []);
+  const handleAddToCartRef = () => {
+    const storedData = JSON.parse(localStorage.getItem("card")) || [];
+
+    const existingProduct = storedData.find((prod) => prod.id === id);
+
+    if (existingProduct) {
+      existingProduct.qty++; // Jika produk sudah ada, tambah jumlah
+    } else {
+      storedData.push({
+        id,
+        title: judul,
+        category: kategory1,
+        price: kategory2,
+        image: image, // Pastikan kamu menyimpan gambar juga
+        qty: 1,
+      });
+    }
+
+    // Simpan kembali data yang telah diperbarui ke localStorage
+    localStorage.setItem("card", JSON.stringify(storedData));
+  };
   return (
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2">{judul}</div>
@@ -38,7 +74,7 @@ const ContentText = (props) => {
         </span>
       </div>
       <div className="flex justify-end">
-        <Button>Card</Button>
+        <Button onClick={() => handleAddToCartRef()}>Card</Button>
       </div>
     </div>
   );
