@@ -14,7 +14,7 @@ const LayerOne = () => {
   return (
     <div className="flex justify-start items-center flex-wrap">
       <img
-        src="/public/LOGO_ALPIN.png"
+        src="/public/images/LOGO_ALPIN.png"
         alt="logo"
         width={50}
         height={25}
@@ -44,7 +44,7 @@ const LayerTwo = (props) => {
     <>
       <div className="flex justify-end gap-10 items-center text-white mr-20">
         <img
-          src="/public/shopping-cart.png"
+          src="/public/images/shopping-cart.png"
           alt="product list"
           width={45}
           height={20}
